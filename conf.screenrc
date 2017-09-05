@@ -1,0 +1,34 @@
+# shellを選ぶ
+shell zsh
+
+# captionの設定
+caption always "%?%F%{= wk}%:%{= ww}%? %-w%?%F%{=b bw}%:%{= wk}%?%n %t%{-}%+w %= %?%F%{= .r}%:%{..}%?[%H]"
+# caption always "%?%F%{=b bw}%?%n %f %t %?%F%{-}%?"
+
+# 最終行にウィンドウ一覧を表示
+# hardstatus alwayslastline "[%H] %-w%{=b bw}%n %t%{-}%+w"
+
+# エンコーディングの設定
+defencoding utf-8
+encoding utf-8 utf-8
+
+# prefix キーの設定
+escape "^t^t"
+
+# 履歴の行数
+defscrollback 30000
+
+# onにすると、ビープを鳴らすときに錫際に音を鳴らさず、下のメッセージ領域にメッセージを表示させる。
+vbell on
+
+# offにするとスタートアップ画面を表示させなくする。
+startup_message off
+
+# onにしておくとscreenがいきなりお亡くなりになられても、その時のプロセスは生きて残る
+autodetach on
+
+# bind の設定
+bind r eval 'echo "Resize window"' 'command -c resize'
+     bind -c resize ^]  command
+bind -c resize n eval 'resize +1' 'command -c resize'
+bind -c resize p eval 'resize -1' 'command -c resize'
