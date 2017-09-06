@@ -1,5 +1,5 @@
 ;; ロードパス
-(setq load-path (cons "~/.elisp" load-path))
+(setq load-path (cons "~/.emacs.d/elisp" load-path))
 
 ;;; 行数表示
 (line-number-mode t)
