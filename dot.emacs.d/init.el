@@ -20,6 +20,10 @@
 
 ;;; .#* とかのバックアップファイルを作らない
 (setq auto-save-default nil)
+(setq auto-save-list-file-prefix nil)
+
+;; 複数ウィンドウを開かないようにする
+(setq ns-pop-up-frames nil) 
 
 ;; タブの無効化
 (setq-default indent-tabs-mode nil)
