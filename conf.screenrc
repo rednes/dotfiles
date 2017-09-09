@@ -29,6 +29,6 @@ autodetach on
 
 # bind の設定
 bind r eval 'echo "Resize window"' 'command -c resize'
-     bind -c resize ^]  command
+bind -c resize ^]  command
 bind -c resize n eval 'resize +1' 'command -c resize'
 bind -c resize p eval 'resize -1' 'command -c resize'

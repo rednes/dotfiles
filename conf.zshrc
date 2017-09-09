@@ -49,3 +49,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
 export PATH="/usr/local/opt/libxslt/bin:$PATH"
+
+# screenのタイトルをカレントディレクトリにする
+if [ "$TERM" = "screen" ]; then
+    chpwd () {screen -X title $(basename $(pwd))}
+fi
