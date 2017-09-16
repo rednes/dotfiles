@@ -14,7 +14,7 @@ do
 done
 for d in dot.??*
 do
-  ln -sf "$DOTPATH/$d" "$HOME/$(echo $d|cut -c 4-)"
+  ln -sfn "$DOTPATH/$d" "$HOME/$(echo $d|cut -c 4-)"
   if [ $? -eq 0 ]; then
     printf "    %-25s -> %s\n" "\$DOTPATH/$d" "\$HOME/$(echo $d|cut -c 4-)"
   fi
