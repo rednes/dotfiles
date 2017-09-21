@@ -1,6 +1,8 @@
 # -*- sh -*-
 
-source ${HOME}/.zshrc.local
+if [ -r ${HOME}/.zshrc.local ]; then
+    source ${HOME}/.zshrc.local
+fi
 
 # 日本語UTF-8
 export LANG=ja_JP.UTF-8
@@ -38,17 +40,8 @@ alias l="ls -al|lv"
 alias ll="ls -l"
 alias lg="ls -G"
 
-alias rm="my_rm"
-
-alias emacs-nox="/usr/bin/emacs"
-
-alias convertFromAppToAlias="echo \# alias for app > ~/.zshrc.local;find /Applications -name \"*.app\" -print0 | xargs -0 -I{} makeAppAlias \"{}\" >> ~/.zshrc.local"
-
-# Setting PATH for rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="/usr/local/opt/libxml2/bin:$PATH"
-export PATH="/usr/local/opt/libxslt/bin:$PATH"
+# git alias
+alias gl="git log --oneline --decorate --graph"
 
 # screenのタイトルをカレントディレクトリにする
 if [ "$TERM" = "screen" ]; then
