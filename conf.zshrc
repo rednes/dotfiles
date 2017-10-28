@@ -41,7 +41,7 @@ alias ll="ls -l"
 alias lg="ls -G"
 
 # git alias
-alias gl="git log --oneline --decorate --graph"
+alias gl="git log --oneline --decorate --graph --branches"
 
 # screenのタイトルをカレントディレクトリにする
 if [ "$TERM" = "screen" ]; then
