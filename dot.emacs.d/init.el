@@ -1,3 +1,9 @@
+;; レポジトリ変数にMELPA 、Marmaladeを追加する
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 ;; ロードパス
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
@@ -66,6 +72,13 @@
 (define-key ac-complete-mode-map "\C-\M-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-\M-p" 'ac-previous)
 
+;; yaml-mode
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
+
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; MacのEmacsだった場合
 (when (memq window-system '(mac ns))
   (global-set-key [s-mouse-1] 'browse-url-at-mouse)
@@ -115,4 +128,4 @@
   (setq initial-frame-alist default-frame-alist)
   ;; Emacsのフレームを透明に
   (modify-all-frames-parameters
-      (list (cons 'alpha  '(80 60 70 50)))))
+   (list (cons 'alpha  '(80 60 70 50)))))
