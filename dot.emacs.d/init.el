@@ -65,6 +65,9 @@
 ;; Ctrl c r を comment-or-uncomment-regionのショートカットにする
 (global-set-key "\C-cr" 'comment-or-uncomment-region)
 
+;; Ctrl x g を magit-statusのショートカットにする
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; auto-complete.elの為の記述
 (require 'auto-complete)
 (global-auto-complete-mode t)
@@ -129,3 +132,16 @@
   ;; Emacsのフレームを透明に
   (modify-all-frames-parameters
    (list (cons 'alpha  '(80 60 70 50)))))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (magit flylisp flycheck))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
