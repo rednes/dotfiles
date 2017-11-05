@@ -1,8 +1,20 @@
-;; レポジトリ変数にMELPA 、Marmaladeを追加する
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+;; el-getの設定
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(el-get-bundle auto-complete)
+(el-get-bundle web-mode)
+(el-get-bundle yaml-mode)
+(el-get-bundle flycheck)
+
 
 ;; ロードパス
 (add-to-list 'load-path "~/.emacs.d/elisp")
@@ -73,18 +85,17 @@
 ;; Ctrl x g を magit-statusのショートカットにする
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; auto-complete.elの為の記述
-(require 'auto-complete)
+;; auto-completeの設定
 (global-auto-complete-mode t)
+(setq ac-comphist-file "~/.emacs.d/cache/ac-comphist.dat") 
 
 (define-key ac-complete-mode-map "\C-\M-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-\M-p" 'ac-previous)
 
-;; yaml-mode
-(when (require 'yaml-mode nil t)
-  (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
+;; yaml-modeの設定
+(add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode))
 
-;; flycheck
+;; flycheckの設定
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; MacのEmacsだった場合
@@ -137,16 +148,3 @@
   ;; Emacsのフレームを透明に
   (modify-all-frames-parameters
    (list (cons 'alpha  '(80 60 70 50)))))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (magit flylisp flycheck))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

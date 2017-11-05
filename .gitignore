@@ -1,5 +1,4 @@
-.DS_Store
 dot.emacs.d/backup/*
-dot.emacs.d/elpa
-dot.emacs.d/.cask
+dot.emacs.d/cache/*
+dot.emacs.d/el-get
 !.gitempty
