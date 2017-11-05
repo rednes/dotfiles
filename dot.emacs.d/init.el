@@ -5,7 +5,7 @@
 (package-initialize)
 
 ;; ロードパス
-(setq load-path (cons "~/.emacs.d/elisp" load-path))
+(add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;;; 行数表示
 (line-number-mode t)
@@ -24,12 +24,17 @@
       (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/backup"))
                 backup-directory-alist))
 
-;;; .#* とかのバックアップファイルを作らない
-(setq auto-save-default nil)
-(setq auto-save-list-file-prefix nil)
+;;; .#* とかの自動保存ファイルを特定のフォルダに作成
+(setq auto-save-default t)
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacs.d/backup/") t)))
+
+;;; 自動保存ファイルのリストファイルを特定のフォルダに作成
+(setq auto-save-list-file-prefix t)
+(setq auto-save-list-file-prefix "~/.emacs.d/backup/.saves-")
 
 ;; 複数ウィンドウを開かないようにする
-(setq ns-pop-up-frames nil) 
+(setq ns-pop-up-frames nil)
 
 ;; タブの無効化
 (setq-default indent-tabs-mode nil)
