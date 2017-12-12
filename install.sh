@@ -3,7 +3,7 @@
 DOTPATH=$(pwd)/dotfiles
 
 echo "\$DOTPATH : $DOTPATH"
-pushd $DOTPATH
+cd $DOTPATH
 echo "Created dotfile symbolic links."
 for f in conf.??*
 do
@@ -19,4 +19,4 @@ do
     printf "    %-25s -> %s\n" "\$DOTPATH/$d" "\$HOME/$(echo $d|cut -c 4-)"
   fi
 done
-popd
+cd ..
