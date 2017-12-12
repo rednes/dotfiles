@@ -53,15 +53,19 @@
 
 ;; 全角スペースに緑の色づけ。全角スペースは罠だよ =(
 ;; タブに青の色づけ。
+;; 行末空白にピンクの色づけ。
 (defface my-face-b-1 '((t (:background "green"))) nil)
 (defface my-face-b-2 '((t (:background "blue"))) nil)
+(defface my-face-b-3 '((t (:background "pink"))) nil) 
 (defvar my-face-b-1 'my-face-b-1)
 (defvar my-face-b-2 'my-face-b-2)
+(defvar my-face-b-3 'my-face-b-3)
 (defadvice font-lock-mode (before my-font-lock-mode ())
   (font-lock-add-keywords
    major-mode
    '(("　" 0 my-face-b-1 append)
      ("\t" 0 my-face-b-2 append)
+     ("[ ]+$" 0 my-face-b-3 append)
      )))
 (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
 (ad-activate 'font-lock-mode)
