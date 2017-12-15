@@ -103,7 +103,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; MacのEmacsだった場合
-(when (memq window-system '(mac ns))
+(when (memq window-system '(ns))
   (global-set-key [s-mouse-1] 'browse-url-at-mouse)
   (let* ((size 12)
          (jpfont "Hiragino Maru Gothic ProN")
