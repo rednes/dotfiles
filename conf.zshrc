@@ -47,3 +47,6 @@ alias gl="git log --oneline --decorate --graph --branches"
 if [ "$TERM" = "screen" ]; then
     chpwd () {screen -X title $(basename $(pwd))}
 fi
+
+# AWS CLI completerの読み込み
+source /usr/local/bin/aws_zsh_completer.sh
