@@ -54,6 +54,17 @@ alias lg="ls -G"
 # git alias
 alias gl="git log --oneline --decorate --graph --branches --tags --remotes"
 
+# docker alias
+unalias docker
+if [ -r /Applications/Docker.app ]; then
+    alias docker-app="open -a /Applications/Docker.app"
+fi
+
+# emacs alias
+if [ -r /Applications/Emacs.app ]; then
+    alias emacs-nox="/usr/bin/emacs"
+fi
+
 # screenのタイトルをカレントディレクトリにする
 if [ "$TERM" = "screen" ]; then
     chpwd () {screen -X title $(basename $(pwd)|cut -c 1-15)}
@@ -67,3 +78,9 @@ precmd(){
 
 # AWS CLI completerの読み込み
 source /usr/local/bin/aws_zsh_completer.sh
+
+# added by travis gem
+if [ -r ~/.travis/travis.sh ]
+   source ~/.travis/travis.sh
+fi
+
