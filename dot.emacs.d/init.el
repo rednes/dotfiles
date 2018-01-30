@@ -13,6 +13,7 @@
 (el-get-bundle auto-complete)
 (el-get-bundle web-mode)
 (el-get-bundle yaml-mode)
+(el-get-bundle typescript-mode)
 (el-get-bundle flycheck)
 
 
