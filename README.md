@@ -3,7 +3,7 @@
 My dotfiles for:
 
 * emacs
-* git(ignore global)
+* git(ignore global, config)
 * screen
 * vim
 * zsh
