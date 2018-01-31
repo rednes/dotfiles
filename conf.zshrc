@@ -56,7 +56,7 @@ alias gl="git log --oneline --decorate --graph --branches"
 
 # screenのタイトルをカレントディレクトリにする
 if [ "$TERM" = "screen" ]; then
-    chpwd () {screen -X title $(basename $(pwd))}
+    chpwd () {screen -X title $(basename $(pwd)|cut -c 1-15)}
 fi
 
 # zshのプロンプトが表示される毎に実行される関数
