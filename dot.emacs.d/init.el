@@ -15,6 +15,7 @@
 (el-get-bundle yaml-mode)
 (el-get-bundle typescript-mode)
 (el-get-bundle flycheck)
+(el-get-bundle markdown-mode)
 
 
 ;; ロードパス
