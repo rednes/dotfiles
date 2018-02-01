@@ -11,6 +11,7 @@
     (eval-print-last-sexp)))
 
 (el-get-bundle auto-complete)
+(el-get-bundle editorconfig)
 (el-get-bundle web-mode)
 (el-get-bundle yaml-mode)
 (el-get-bundle typescript-mode)
@@ -90,6 +91,9 @@
 
 ;; Ctrl x g を magit-statusのショートカットにする
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; editorconfigの起動
+(editorconfig-mode 1)
 
 ;; auto-completeの設定
 (global-auto-complete-mode t)
