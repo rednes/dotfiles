@@ -95,6 +95,12 @@
 ;; editorconfigの起動
 (editorconfig-mode 1)
 
+;; json-modeの設定
+(add-hook 'js-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
 ;; auto-completeの設定
 (global-auto-complete-mode t)
 (setq ac-comphist-file "~/.emacs.d/cache/ac-comphist.dat") 
