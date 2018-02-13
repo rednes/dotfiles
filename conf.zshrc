@@ -80,7 +80,7 @@ precmd(){
 source /usr/local/bin/aws_zsh_completer.sh
 
 # added by travis gem
-if [ -r ~/.travis/travis.sh ]
+if [ -r ~/.travis/travis.sh ]; then
    source ~/.travis/travis.sh
 fi
 
