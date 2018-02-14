@@ -1,6 +1,19 @@
 # -*- sh -*-
 
-if [ -r ${HOME}/.zshrc.local ]; then
+# if文用論理演算子
+# 演算子        意味
+# -d ファイル名 ファイル名がディレクトリであれば真
+# -f ファイル名 ファイルであれば真
+# -e ファイル名 ファイルがあれば真
+# -L ファイル名 シンボリックリンクであれば真
+# -r ファイル名 読み取り可能であれば真
+# -w ファイル名 書き込み可能であれば真
+# -x ファイル名 実行可能であれば真
+# -s ファイル名 ファイルが存在し、空でなければ真
+# -S ファイル名 ファイルがソケットならば真
+
+
+if [ -f ${HOME}/.zshrc.local ]; then
     source ${HOME}/.zshrc.local
 fi
 
@@ -55,13 +68,13 @@ alias lg="ls -G"
 alias gl="git log --oneline --decorate --graph --branches --tags --remotes"
 
 # docker alias
-unalias docker
-if [ -r /Applications/Docker.app ]; then
+if [ -e /Applications/Docker.app ]; then
+    unalias docker
     alias docker-app="open -a /Applications/Docker.app"
 fi
 
 # emacs alias
-if [ -r /Applications/Emacs.app ]; then
+if [ -e /Applications/Emacs.app ]; then
     alias emacs-nox="/usr/bin/emacs"
 fi
 
@@ -80,7 +93,6 @@ precmd(){
 source /usr/local/bin/aws_zsh_completer.sh
 
 # added by travis gem
-if [ -r ~/.travis/travis.sh ]; then
+if [ -f ~/.travis/travis.sh ]; then
    source ~/.travis/travis.sh
 fi
-
