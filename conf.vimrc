@@ -6,6 +6,8 @@ set number
 set autoindent
 "構文の色づけ
 syntax on
+"タブ入力を複数の空白入力に置き換える
+set expandtab
 "ファイルブラウザにどのディレクトリを使うかを指定する
 set browsedir=current
 "検索結果をハイライトする
@@ -14,8 +16,6 @@ set hlsearch
 set ignorecase
 "ステータスラインを表示するウィンドウを設定する
 "set laststatus=2
-"タブ文字、行末など不可視文字を表示する。
-set list
 "カーソルが何行目の何列目に置かれているかを表示する
 set ruler
 "現在のモードを表示する
@@ -26,3 +26,20 @@ set smartindent
 set undolevels=1000
 "補完候補を表示する
 set wildmenu
+"タブ、空白、改行の可視化
+set list
+set listchars=tab:>.,trail:✗,eol:↲,extends:>,precedes:<,nbsp:%
+"全角スペースをハイライト表示
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
+
