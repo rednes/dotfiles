@@ -2,7 +2,7 @@
 	name = rednes
 	email = 528249+rednes@users.noreply.github.com
 [core]
-	editor = emacs
+	editor = vim
 	excludesfile = ~/.gitignore_global
 [secrets]
 	providers = git secrets --aws-provider
