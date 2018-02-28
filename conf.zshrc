@@ -78,6 +78,9 @@ if [ -e /Applications/Emacs.app ]; then
     alias emacs-nox="/usr/bin/emacs"
 fi
 
+# vim alias
+alias vi=vim
+
 # screenのタイトルをカレントディレクトリにする
 if [ "$TERM" = "screen" ]; then
     chpwd () {screen -X title $(basename $(pwd)|cut -c 1-15)}
