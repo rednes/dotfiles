@@ -96,3 +96,5 @@ source /usr/local/bin/aws_zsh_completer.sh
 if [ -f ~/.travis/travis.sh ]; then
    source ~/.travis/travis.sh
 fi
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
