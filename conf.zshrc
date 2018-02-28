@@ -13,6 +13,10 @@
 # -S ファイル名 ファイルがソケットならば真
 
 
+# 強力な補完機能(?)らしい。よくわかんない。
+autoload -U compinit
+compinit
+
 if [ -f ${HOME}/.zshrc.local ]; then
     source ${HOME}/.zshrc.local
 fi
@@ -54,10 +58,6 @@ setopt auto_pushd
 
 # 間違ったコマンドを訂正
 setopt dvorak correct
-
-# 強力な補完機能(?)らしい。よくわかんない。
-autoload -U compinit
-compinit
 
 #ls alias
 alias l="ls -al|lv"
