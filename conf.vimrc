@@ -45,3 +45,7 @@ endif
 
 "左右のカーソル移動で行間移動可能にする。
 set whichwrap=b,s,<,>,[,]
+"クリップボード有効化
+set clipboard+=unnamed
+"バックスペースの有効化
+set backspace=indent,eol,start
