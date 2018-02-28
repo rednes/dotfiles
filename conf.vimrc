@@ -43,3 +43,5 @@ if has('syntax')
     call ZenkakuSpace()
 endif
 
+"左右のカーソル移動で行間移動可能にする。
+set whichwrap=b,s,<,>,[,]
