@@ -115,6 +115,13 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; MacのEmacsだった場合
+(when (eq system-type 'darwin)
+  ;; CommandとOptionを入れ替える
+  (setq ns-command-modifier (quote meta))
+  (setq ns-alternate-modifier (quote super)))
+
+
+;; ターミナル外のEmacsだった場合
 (when (memq window-system '(ns))
   (global-set-key [s-mouse-1] 'browse-url-at-mouse)
   (let* ((size 12)
@@ -141,9 +148,6 @@
   (setq frame-inherited-parameters '(font tool-bar-lines))
   ;; emacs-server
   (server-start)
-  ;; CommandとOptionを入れ替える
-  (setq ns-command-modifier (quote meta))
-  (setq ns-alternate-modifier (quote super))
   ;; メニューバーの消去
   (tool-bar-mode -1)
   ;; 起動時のウィンドウサイズ、色など
