@@ -5,6 +5,7 @@
 * emacs
 * git(ignore global, config)
 * screen
+* tmux
 * vim
 * zsh
 
