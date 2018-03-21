@@ -49,3 +49,5 @@ set whichwrap=b,s,<,>,[,]
 set clipboard+=unnamed
 "バックスペースの有効化
 set backspace=indent,eol,start
+"マウスの有効化
+set mouse=a
