@@ -1,4 +1,7 @@
-dot.emacs.d/backup/*
-dot.emacs.d/cache/*
-dot.emacs.d/el-get
-!.gitempty
+dot.emacs.d/*
+!dot.emacs.d/init.el
+!dot.emacs.d/backup/.gitkeep
+!dot.emacs.d/cache/.gitkeep
+!dot.emacs.d/elisp/.gitkeep
+!dot.emacs.d/el-get/.gitkeep
+!.gitkeep
