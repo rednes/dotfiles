@@ -73,6 +73,11 @@ if [ -e /Applications/Docker.app ]; then
     alias docker-app="open -a /Applications/Docker.app"
 fi
 
+# python alias
+if [ -e /Applications/LibreOffice.app ]; then
+    unalias python
+fi
+
 # emacs alias
 if [ -e /Applications/Emacs.app ]; then
     alias emacs-nox="/usr/bin/emacs"
