@@ -21,6 +21,9 @@ if [ -f ${HOME}/.zshrc.local ]; then
     source ${HOME}/.zshrc.local
 fi
 
+# Shellパス設定
+export SHELL=$(which zsh)
+
 # Gitブランチ名をプロンプトに表示させるための設定
 autoload -Uz vcs_info
 setopt prompt_subst
