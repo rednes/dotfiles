@@ -126,3 +126,7 @@ fbr() {
 fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
+
+# direnv settings
+export EDITOR=vi
+eval "$(direnv hook zsh)"
