@@ -86,6 +86,11 @@ if [ -e /Applications/Emacs.app ]; then
     alias emacs-nox="/usr/bin/emacs"
 fi
 
+# Visual Studio Code alias
+if [ -e /Applications/Visual\ Studio\ Code.app ]; then
+    alias vscode=visual_studio_code
+fi
+
 # vim alias
 alias vi=vim
 
