@@ -106,7 +106,9 @@ precmd(){
 }
 
 # AWS CLI completerの読み込み
-source /usr/local/bin/aws_zsh_completer.sh
+if [ -f /usr/local/bin/aws_zsh_completer.sh ]; then
+    source /usr/local/bin/aws_zsh_completer.sh
+fi
 
 # added by travis gem
 if [ -f ~/.travis/travis.sh ]; then
