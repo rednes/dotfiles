@@ -76,6 +76,12 @@ if [ -e /Applications/Docker.app ]; then
     alias docker-app="open -a /Applications/Docker.app"
 fi
 
+# todoist alias
+if [ -e /Applications/Todoist.app ]; then
+    unalias todoist
+    alias todoist-app="open -a /Applications/Todoist.app"
+fi
+
 # python alias
 if [ -e /Applications/LibreOffice.app ]; then
     unalias python
