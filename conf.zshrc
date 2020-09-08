@@ -16,6 +16,7 @@
 # 強力な補完機能(?)らしい。よくわかんない。
 autoload -U compinit
 compinit
+autoload bashcompinit && bashcompinit
 
 if [ -f ${HOME}/.zshrc.local ]; then
     source ${HOME}/.zshrc.local
