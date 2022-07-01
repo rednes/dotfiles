@@ -122,7 +122,7 @@ if [ -f ~/.travis/travis.sh ]; then
    source ~/.travis/travis.sh
 fi
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # fzf settings
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
