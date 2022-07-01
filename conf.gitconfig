@@ -12,6 +12,7 @@
         allowed = AKIAIOSFODNN7EXAMPLE
         allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
         allowed = dummy
+        allowed = 123456789012
 [init]
         templatedir = ~/.git-templates/git-secrets
 [filter "lfs"]
