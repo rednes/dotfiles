@@ -1,6 +1,6 @@
 #! /bin/sh
 
-DOTPATH=$(pwd)/dotfiles
+DOTPATH=$(cd "$(dirname "$0")" && pwd)
 
 echo "\$DOTPATH : $DOTPATH"
 cd $DOTPATH
@@ -19,4 +19,3 @@ do
     printf "    %-25s -> %s\n" "\$DOTPATH/$d" "\$HOME/$(echo $d|cut -c 4-)"
   fi
 done
-cd ..
