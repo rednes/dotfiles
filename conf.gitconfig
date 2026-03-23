@@ -15,6 +15,7 @@
         allowed = 123456789012
 [init]
         templatedir = ~/.git-templates/git-secrets
+        defaultBranch = main
 [filter "lfs"]
         clean = git-lfs clean -- %f
         smudge = git-lfs smudge -- %f
