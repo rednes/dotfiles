@@ -18,6 +18,16 @@ $ git clone https://github.com/rednes/dotfiles.git
 $ ./dotfiles/install.sh
 ```
 
+## zsh の設定について
+
+`install.sh` は `~/.git.zshrc` のシンボリックリンクを作成するが、**`~/.zshrc` は手動で作成する必要がある**。
+
+以下のスニペットを `~/.zshrc` に追記すること：
+
+```zsh
+# GitHub管理の共通設定を読み込む
+[[ -f ~/.git.zshrc ]] && source ~/.git.zshrc
+```
 
 ## :+1: Commit symbol
 
