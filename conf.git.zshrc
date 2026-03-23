@@ -18,10 +18,6 @@ autoload -U compinit
 compinit
 autoload bashcompinit && bashcompinit
 
-if [ -f ${HOME}/.zshrc.local ]; then
-    source ${HOME}/.zshrc.local
-fi
-
 # Shellパス設定
 export SHELL=$(which zsh)
 
@@ -117,11 +113,6 @@ if [ -f /usr/local/bin/aws_zsh_completer.sh ]; then
     source /usr/local/bin/aws_zsh_completer.sh
 fi
 
-# added by travis gem
-if [ -f ~/.travis/travis.sh ]; then
-   source ~/.travis/travis.sh
-fi
-
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # fzf settings
@@ -144,3 +135,10 @@ fh() {
 # direnv settings
 export EDITOR=vi
 eval "$(direnv hook zsh)"
+
+# bun completions
+[ -s "/Users/kitano.yuichi/.bun/_bun" ] && source "/Users/kitano.yuichi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
