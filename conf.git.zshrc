@@ -94,6 +94,12 @@ if [ -e /Applications/Visual\ Studio\ Code.app ]; then
     alias vscode=visual_studio_code
 fi
 
+# Claude alias
+if [ -e /Applications/Claude.app ]; then
+    unalias claude
+    alias claude_app="open -a /Applications/Claude.app"
+fi
+
 # vim alias
 alias vi=vim
 
