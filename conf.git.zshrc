@@ -113,8 +113,6 @@ if [ -f /usr/local/bin/aws_zsh_completer.sh ]; then
     source /usr/local/bin/aws_zsh_completer.sh
 fi
 
-[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
 # fzf settings
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
@@ -142,3 +140,6 @@ eval "$(direnv hook zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# zoxide
+eval "$(zoxide init zsh)"
