@@ -100,6 +100,14 @@ if [ -e /Applications/Claude.app ]; then
     alias claude_app="open -a /Applications/Claude.app"
 fi
 
+# Rancher Desktop alias
+if [ -e /Applications/Rancher\ Desktop.app ]; then
+    if [[ -n ${aliases[rancher_desktop]} ]]; then
+        unalias rancher_desktop
+    fi
+    alias rancher_desktop="open -a /Applications/Rancher\ Desktop.app"
+fi
+
 # vim alias
 alias vi=vim
 
