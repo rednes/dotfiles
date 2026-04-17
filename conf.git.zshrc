@@ -20,6 +20,7 @@ autoload bashcompinit && bashcompinit
 
 # Shellパス設定
 export SHELL=$(which zsh)
+export PATH="$HOME/.bin:$PATH"
 
 # Gitブランチ名をプロンプトに表示させるための設定
 autoload -Uz vcs_info
@@ -63,6 +64,10 @@ setopt dvorak correct
 alias l="ls -al|lv"
 alias ll="ls -l"
 alias lg="ls -G"
+
+if [ -x "$HOME/.bin/trash-rm" ] && command -v trash >/dev/null 2>&1; then
+    alias rm="trash-rm"
+fi
 
 # git alias
 alias gl="git log --oneline --decorate --graph --branches --tags --remotes"

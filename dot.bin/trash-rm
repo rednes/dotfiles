@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  echo "trash-rm: usage: rm [-rf] FILE..." >&2
+}
+
+unsupported_option() {
+  echo "trash-rm: unsupported option: $1" >&2
+  echo "trash-rm: only -r and -f are supported" >&2
+}
+
+if ! command -v trash >/dev/null 2>&1; then
+  echo "trash-rm: trash command not found" >&2
+  exit 127
+fi
+
+files=()
+parse_options=1
+recursive=0
+
+# rm のうち許可するオプションは -r と -f だけにする。
+# -rf や -fr のようにまとめて指定された場合も同じように扱う。
+for arg in "$@"; do
+  if [[ "$parse_options" -eq 1 && "$arg" == "--" ]]; then
+    parse_options=0
+    continue
+  fi
+
+  if [[ "$parse_options" -eq 1 && "$arg" == -* ]]; then
+    if [[ "$arg" =~ ^-[rf]+$ ]]; then
+      if [[ "$arg" == *r* ]]; then
+        recursive=1
+      fi
+      continue
+    fi
+
+    unsupported_option "$arg"
+    exit 64
+  fi
+
+  files+=("$arg")
+done
+
+if [[ "${#files[@]}" -eq 0 ]]; then
+  usage
+  exit 64
+fi
+
+# trash コマンド自体はディレクトリも移動できるため、
+# rm と同じ感覚で使えるように -r なしのディレクトリ指定は拒否する。
+if [[ "$recursive" -eq 0 ]]; then
+  for file in "${files[@]}"; do
+    if [[ -d "$file" && ! -L "$file" ]]; then
+      echo "trash-rm: $file: is a directory" >&2
+      exit 64
+    fi
+  done
+fi
+
+exec trash "${files[@]}"
