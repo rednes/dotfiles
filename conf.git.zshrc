@@ -66,6 +66,7 @@ alias lg="ls -G"
 
 # git alias
 alias gl="git log --oneline --decorate --graph --branches --tags --remotes"
+alias gig="git ls-files -ci --exclude-standard"
 
 # docker alias
 if [ -e /Applications/Docker.app ]; then
