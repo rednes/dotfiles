@@ -7,6 +7,7 @@
 * screen
 * textlint
 * tmux
+* zellij
 * vim
 * zsh
 
