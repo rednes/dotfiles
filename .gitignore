@@ -5,8 +5,4 @@ dot.emacs.d/*
 !dot.emacs.d/elisp/.gitkeep
 !dot.emacs.d/el-get/.gitkeep
 dot.config/*
-!dot.config/fish
-dot.config/fish/*
-!dot.config/fish/config.fish
-!dot.config/fish/functions
 !.gitkeep

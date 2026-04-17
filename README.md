@@ -3,7 +3,6 @@
 ## My dotfiles for:
 
 * emacs
-* fish
 * git(ignore global, config)
 * screen
 * textlint
