@@ -92,7 +92,7 @@ fi
 
 # Visual Studio Code alias
 if [ -e /Applications/Visual\ Studio\ Code.app ]; then
-    alias vscode=visual_studio_code
+    alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 fi
 
 # Claude alias
