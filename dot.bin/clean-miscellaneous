@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  echo "clean-miscellaneous: usage: clean-miscellaneous [--dry-run] DIRECTORY" >&2
+}
+
+if ! command -v trash >/dev/null 2>&1; then
+  echo "clean-miscellaneous: trash command not found" >&2
+  exit 127
+fi
+
+dry_run=0
+target_dir=""
+
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) dry_run=1 ;;
+    -*) echo "clean-miscellaneous: unknown option: $arg" >&2; exit 64 ;;
+    *) target_dir="$arg" ;;
+  esac
+done
+
+if [[ -z "$target_dir" ]]; then
+  usage
+  exit 64
+fi
+
+if [[ ! -d "$target_dir" ]]; then
+  echo "clean-miscellaneous: $target_dir: no such directory" >&2
+  exit 1
+fi
+
+targets=()
+while IFS= read -r -d '' dir; do
+  targets+=("$dir")
+done < <(find "$target_dir" \
+  \( -type d -name "node_modules" -o -type d -name ".next" -o -type d -path "*/.yarn/cache" \) \
+  -prune -print0)
+
+if [[ ${#targets[@]} -eq 0 ]]; then
+  echo "clean-miscellaneous: no targets found"
+  exit 0
+fi
+
+total_kb=0
+for dir in "${targets[@]}"; do
+  if [[ "$dry_run" -eq 1 ]]; then
+    kb=$(du -sk "$dir" 2>/dev/null | cut -f1)
+    total_kb=$((total_kb + kb))
+    size=$(du -sh "$dir" 2>/dev/null | cut -f1)
+    printf "[dry-run] %6s %s\n" "$size" "$dir"
+  else
+    trash "$dir"
+    echo "removed: $dir"
+  fi
+done
+
+if [[ "$dry_run" -eq 1 ]]; then
+  total=$(echo "$total_kb" | awk '{
+    v=$1; units="KMGT"; i=0
+    while (v >= 1024 && i < length(units)-1) { v/=1024; i++ }
+    printf "%.1f%s", v, substr(units, i+1, 1)
+  }')
+  printf "[dry-run] %6s total\n" "$total"
+fi
