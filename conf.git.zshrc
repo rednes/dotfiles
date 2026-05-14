@@ -163,3 +163,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+bindkey -e
