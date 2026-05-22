@@ -11,29 +11,40 @@
 * vim
 * zsh
 
-## ファイル命名規則
+## 管理方法
 
-`install.sh` は以下のルールでシンボリックリンクを作成する：
+[chezmoi](https://www.chezmoi.io/) で管理しています。
 
-| リポジトリ内 | リンク先 | 説明 |
-|---|---|---|
-| `conf.gitconfig` | `~/.gitconfig` | 先頭の `conf` を除去してリンク |
-| `dot.config/` | `~/.config/` | 先頭の `dot` を除去してリンク |
-| `dot.bin/` | `~/.bin` | 自作スクリプト用ディレクトリをリンク |
+## Install
 
-- `conf.*` → ファイルを `~/.*` にリンク
-- `dot.*` → ディレクトリを `~/.*/` にリンク
-
-## Install:
+### 新しいマシンへのセットアップ
 
 ```sh
-$ git clone https://github.com/rednes/dotfiles.git
-$ ./dotfiles/install.sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply rednes
+```
+
+### 日常の使い方
+
+```sh
+# ファイルを管理対象に追加
+chezmoi add ~/.example
+
+# ファイルを編集
+chezmoi edit ~/.example
+
+# 変更をホームディレクトリに反映
+chezmoi apply
+
+# ソースと実ファイルの差分を確認
+chezmoi diff
+
+# 管理対象ファイルの一覧
+chezmoi managed
 ```
 
 ## zsh の設定について
 
-`install.sh` は `~/.git.zshrc` のシンボリックリンクを作成するが、**`~/.zshrc` は手動で作成する必要がある**。
+`chezmoi apply` は `~/.git.zshrc` を配置するが、**`~/.zshrc` は手動で作成する必要がある**。
 
 以下のスニペットを `~/.zshrc` に追記すること：
 

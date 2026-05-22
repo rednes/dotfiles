@@ -155,7 +155,7 @@ export EDITOR=vi
 eval "$(direnv hook zsh)"
 
 # bun completions
-[ -s "/Users/kitano.yuichi/.bun/_bun" ] && source "/Users/kitano.yuichi/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
